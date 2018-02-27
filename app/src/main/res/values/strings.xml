@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Math For Toys</string>
+    <string name="start_button">Touch to Start!</string>
+    <string name="title_text">MATH FOR TOYS</string>
+    <string name="kindergarden_button">Kindergarden</string>
+    <string name="play_button">PLAY</string>
+    <string name="store_button">STORE</string>
+    <string name="settings_button">SETTINGS</string>
+    <string name="menu_title">MENU</string>
+    <string name="first_grade">1st</string>
+    <string name="second_grade">2nd</string>
+    <string name="third_grade">3rd</string>
+    <string name="fourth_grade">4th</string>
+    <string name="fifth_grade">5th</string>
+    <string name="sixth_grade">6th</string>
+    <string name="select_grade_title">SELECT GRADE</string>
+    <string name="quit_button">Quit to Menu</string>
+    <string name="music_text">Music</string>
+    <string name="question_timer">Enable Question Timer</string>
+    <string name="notifications">Manage Notifications</string>
+    <string name="email">Change Email</string>
+    <string name="faq">FAQ</string>
+    <string name="about">About the Developer</string>
+</resources>
