@@ -15,10 +15,4 @@
     <string name="sixth_grade">6th</string>
     <string name="select_grade_title">SELECT GRADE</string>
     <string name="quit_button">Quit to Menu</string>
-    <string name="music_text">Music</string>
-    <string name="question_timer">Enable Question Timer</string>
-    <string name="notifications">Manage Notifications</string>
-    <string name="email">Change Email</string>
-    <string name="faq">FAQ</string>
-    <string name="about">About the Developer</string>
 </resources>

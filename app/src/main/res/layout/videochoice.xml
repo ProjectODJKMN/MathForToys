@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:orientation="vertical"
+    android:background="#2f333f"
+    android:layout_gravity="center"
+    >
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text="X"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@drawable/circle"
+        />
+    <TextView
+        android:id="@+id/choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Choose a video: "
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+    <Button
+        android:id="@+id/addition"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:text="+ : Addition"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
+        android:background="#eaad43"
+        />
+    <Button
+        android:id="@+id/subtraction"
+        android:background="#eaad43"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left"
+        android:foregroundGravity="center_vertical"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- : Subtraction"
+        android:textSize="30sp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+
+        />
+    <Button
+        android:id="@+id/multiplication"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="x : Mutliplication"
+        android:textSize="25sp"
+        android:background="#eaad43"
+        android:layout_margin="10dp"
+        />
+    <Button
+        android:id="@+id/division"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:gravity="left"
+        android:foregroundGravity="center_vertical"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="÷ : Division"
+        android:textSize="30sp"
+        android:background="#eaad43"
+        />
+
+</LinearLayout>
+

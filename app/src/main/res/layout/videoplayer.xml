@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintWidth_default="wrap"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PLAY"
+        android:onClick="videoPlay"
+        android:id="@+id/videoPlayButton"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:layout_margin="10dp"
+        />
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/video"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

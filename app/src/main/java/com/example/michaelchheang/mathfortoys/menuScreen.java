@@ -26,5 +26,14 @@ public class menuScreen extends AppCompatActivity {
                 startActivity(new Intent(menuScreen.this, selectGrade.class));
             }
         });
+        Button setting = (Button) findViewById(R.id.settingsButton);
+        setting.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(menuScreen.this, settingsPage.class));
+            }
+        });
+
     }
 }

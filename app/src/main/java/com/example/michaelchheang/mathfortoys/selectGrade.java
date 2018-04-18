@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class selectGrade extends AppCompatActivity {
-
+    private gameplay game = new gameplay();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,13 +16,31 @@ public class selectGrade extends AppCompatActivity {
     }
 
     public void init(){
-        Button kindergardenButton = (Button) findViewById(R.id.kindergardenButton);
-        kindergardenButton.setOnClickListener(new View.OnClickListener() {
-
+        Button easyButton = (Button) findViewById(R.id.easyButton);
+        easyButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
+                game.setLevel(0);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }
         });
+
+        Button normalButton = (Button) findViewById(R.id.normalButton);
+        normalButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                game.setLevel(1);
+                startActivity(new Intent(selectGrade.this, gameplay.class));
+            }
+        });
+        Button hardButton = (Button) findViewById(R.id.hardButton);
+        hardButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                game.setLevel(2);
+                startActivity(new Intent(selectGrade.this, gameplay.class));
+            }
+        });
+
     }
 }
