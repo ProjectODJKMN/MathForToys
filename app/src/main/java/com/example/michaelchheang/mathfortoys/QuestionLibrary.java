@@ -15,8 +15,8 @@ public class QuestionLibrary {
         num.clear();
         switch(j){
             case 0:
-                x = random.nextInt(6);
-                y = random.nextInt(6);
+                x = random.nextInt(10);
+                y = random.nextInt(10);
                 z = random.nextInt(2);
                 answer = (z == 0) ? x + y : Math.max(x, y) - Math.min(x, y);
                 num.add(answer);
@@ -67,17 +67,21 @@ public class QuestionLibrary {
                         return x + " x " + y;
                     case 3:
                         x = random.nextInt(7) + 1;
-                        y = random.nextInt(7);
+                        y = random.nextInt(7) + 1;
                         answer = x;
                         num.add(answer);
                         while (num.size() < 4) {
                             n = y + (random.nextInt(5)) - random.nextInt(y) + 1;
-                            if ((!num.contains(n)) && (x != y)) {
+                            if ((!num.contains(n))) {
                                 num.add(n);
                             }
                         }
                         return x * y + " ÷ " + y;
                     default:
+                        num.add(1);
+                        num.add(2);
+                        num.add(3);
+                        num.add(4);
                         return "broken";
                 }
             case 2:
@@ -118,17 +122,16 @@ public class QuestionLibrary {
                         }
                     case 3:
                         x = random.nextInt(13) + 1;
-                        y = random.nextInt(13);
+                        y = random.nextInt(13) + 1;
                         answer = x;
                         num.add(answer);
                         while (num.size() < 4) {
                             n = y + (random.nextInt(5)) - random.nextInt(y) + 1;
-                            if ((!num.contains(n)) && (x != y)) {
+                            if ((!num.contains(n))) {
                                 num.add(n);
                             }
                         }
-                        return x * y + " ÷ " + y;
-
+                        return (x * y) + " ÷ " + y;
                     case 4:
                         num.add(1);
                         num.add(2);
@@ -136,6 +139,10 @@ public class QuestionLibrary {
                         num.add(4);
                         return "frac";
                     default:
+                        num.add(1);
+                        num.add(2);
+                        num.add(3);
+                        num.add(4);
                         return "sup";
                 }
             default:
