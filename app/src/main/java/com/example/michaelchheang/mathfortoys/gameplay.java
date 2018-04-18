@@ -31,6 +31,7 @@ public class gameplay extends AppCompatActivity {
     private Button mButtonChoice2;
     private Button mButtonChoice3;
     private Button mButtonChoice4;
+    private Button quitToMenu;
     private ArrayList<Button> buttons = new ArrayList<>();
     private String mAnswer;
     private int mScore = 0;
@@ -49,6 +50,7 @@ public class gameplay extends AppCompatActivity {
         mButtonChoice2 = (Button) findViewById(R.id.choice2_button);
         mButtonChoice3 = (Button) findViewById(R.id.choice3_button);
         mButtonChoice4 = (Button) findViewById(R.id.choice4_button);
+        quitToMenu = (Button) findViewById(R.id.quitButton);
         helpButton = (Button) findViewById(R.id.help);
         buttons.add(mButtonChoice1);
         buttons.add(mButtonChoice2);
@@ -110,6 +112,13 @@ public class gameplay extends AppCompatActivity {
                 }
             }
         });
+        quitToMenu.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity (new Intent(gameplay.this, menuScreen.class));
+            }
+        });
+
         helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,23 +171,7 @@ public class gameplay extends AppCompatActivity {
         });
 
     }
-//    public void showVideos(View v){
-//        myDialog = new Dialog(this);
-//        myDialog.setContentView(R.layout.videochoice);
-//        close = (TextView) myDialog.findViewById(R.id.help);
-//        add = (Button) myDialog.findViewById(R.id.addition);
-//        sub = (Button) myDialog.findViewById(R.id.subtraction);
-//        mult = (Button) myDialog.findViewById(R.id.multiplication);
-//        div = (Button) myDialog.findViewById(R.id.division);
-//
-//        close.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                myDialog.dismiss();
-//            }
-//        });
-//        myDialog.show();
-//    }
+
     private void updateQuestion(){
         mQuestionView.setText(mQuestionLibrary.getQuestion(level));
         Collections.shuffle(buttons);
