@@ -18,8 +18,9 @@
         </activity>
         <activity android:name=".menuScreen" />
         <activity android:name=".selectGrade" />
-        <activity android:name=".gameplay" />
-        <activity android:name=".settings"></activity>
+        <activity android:name=".settingsPage"/>
+        <activity android:name=".videoPlayer"/>
+        <activity android:name=".gameplay"></activity>
     </application>
 
 </manifest>
