@@ -38,6 +38,8 @@ public class gameplay extends AppCompatActivity {
     private static int level;
     final Context context = this;
     private videoPlayer player;
+    private int count;
+    private int limit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,59 +59,32 @@ public class gameplay extends AppCompatActivity {
         buttons.add(mButtonChoice3);
         buttons.add(mButtonChoice4);
         player = new videoPlayer();
+        count = 0;
 
         updateQuestion();
 
         mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mButtonChoice1.getText() == mAnswer) {
-                    mScore += (Math.pow(level + 1, 2));
-                    updateScore(mScore);
-                    Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                } else {
-                    Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
-                }
+                checkAnswer(mButtonChoice1);
             }
         });
         mButtonChoice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mButtonChoice2.getText() == mAnswer) {
-                    mScore += (Math.pow(level + 1, 2));
-                    updateScore(mScore);
-                    Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                } else {
-                    Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
-                }
+                checkAnswer(mButtonChoice2);
             }
         });
         mButtonChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mButtonChoice3.getText() == mAnswer) {
-                    mScore += (Math.pow(level + 1, 2));
-                    updateScore(mScore);
-                    Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                } else {
-                    Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
-                }
+                checkAnswer(mButtonChoice3);
             }
         });
         mButtonChoice4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mButtonChoice4.getText() == mAnswer) {
-                    mScore += (Math.pow(level + 1, 2));
-                    updateScore(mScore);
-                    Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
-                    updateQuestion();
-                } else {
-                    Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
-                }
+                checkAnswer(mButtonChoice4);
             }
         });
         quitToMenu.setOnClickListener(new OnClickListener(){
@@ -184,8 +159,26 @@ public class gameplay extends AppCompatActivity {
     public void setLevel(int n){
         level = n;
     }
+    public void setLimit(int n){
+        limit = n;
+
+    }
+
     private void updateScore(int mScore) {
         mScoreView.setText("Score: " + mScore);
+    }
+    private void checkAnswer(Button x){
+        if (x.getText() == mAnswer) {
+            mScore += (Math.pow(level + 1, 2));
+            updateScore(mScore);
+            Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
+            if(++count == 10){
+                startActivity(new Intent(gameplay.this, menuScreen.class));
+            }
+            updateQuestion();
+        } else {
+            Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

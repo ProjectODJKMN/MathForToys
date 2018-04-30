@@ -21,6 +21,7 @@ public class selectGrade extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 game.setLevel(0);
+                game.setLimit(10);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }
         });
@@ -30,6 +31,7 @@ public class selectGrade extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 game.setLevel(1);
+                game.setLimit(15);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }
         });
@@ -38,6 +40,7 @@ public class selectGrade extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 game.setLevel(2);
+                game.setLimit(20);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }
         });
