@@ -20,7 +20,7 @@ public class selectGrade extends AppCompatActivity {
         easyButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                game.setLevel(0);
+                game.setLevel(1);
                 game.setLimit(10);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }
@@ -30,7 +30,7 @@ public class selectGrade extends AppCompatActivity {
         normalButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                game.setLevel(1);
+                game.setLevel(2);
                 game.setLimit(15);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }
@@ -39,7 +39,7 @@ public class selectGrade extends AppCompatActivity {
         hardButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                game.setLevel(2);
+                game.setLevel(3);
                 game.setLimit(20);
                 startActivity(new Intent(selectGrade.this, gameplay.class));
             }

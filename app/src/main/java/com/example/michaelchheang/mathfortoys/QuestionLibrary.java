@@ -14,7 +14,7 @@ public class QuestionLibrary {
     public String getQuestion(int j) {
         num.clear();
         switch (j) {
-            case 0:
+            case 1:
                 x = random.nextInt(11);
                 y = random.nextInt(11);
                 z = random.nextInt(2);
@@ -28,7 +28,7 @@ public class QuestionLibrary {
                 }
                 return (z == 0) ? x + " + " + y : Math.max(x, y) + " - " + Math.min(x, y);
 
-            case 1:
+            case 2:
                 x = random.nextInt(51);
                 y = random.nextInt(51);
                 z = random.nextInt(4);
@@ -53,7 +53,7 @@ public class QuestionLibrary {
                     default:
                         return "broken";
                 }
-            case 2:
+            case 3:
                 x = random.nextInt(101);
                 y = random.nextInt(101);
                 z = random.nextInt(4);
@@ -115,7 +115,7 @@ public class QuestionLibrary {
                 answer = x * y;
                 num.add(answer);
                 while (num.size() < 4) {
-                    n = (x * ((random.nextInt(5) + 1)) - (random.nextInt(x) + 1));
+                    n = (x * ((random.nextInt(Math.max(x,y)))));
                     if (!num.contains(n)) {
                         num.add(n);
                     }

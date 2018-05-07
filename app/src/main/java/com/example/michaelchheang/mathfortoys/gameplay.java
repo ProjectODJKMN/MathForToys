@@ -4,6 +4,7 @@ import static com.example.michaelchheang.mathfortoys.R.layout.videochoice;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class gameplay extends AppCompatActivity {
     private Button mult;
     private Button div;
     private Button helpButton;
+    private TextView roundView;
     private TextView mScoreView;
     private TextView mQuestionView;
     private Button mButtonChoice1;
@@ -39,7 +41,8 @@ public class gameplay extends AppCompatActivity {
     final Context context = this;
     private videoPlayer player;
     private int count;
-    private int limit;
+    private static int limit;
+    private menuScreen menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class gameplay extends AppCompatActivity {
         setContentView(R.layout.activity_gameplay);
 
         mScoreView = (TextView) findViewById(R.id.scoreText);
+        roundView = (TextView) findViewById(R.id.difficultyText);
         mQuestionView = (TextView) findViewById(R.id.problemText);
         mButtonChoice1 = (Button) findViewById(R.id.choice1_button);
         mButtonChoice2 = (Button) findViewById(R.id.choice2_button);
@@ -59,7 +63,8 @@ public class gameplay extends AppCompatActivity {
         buttons.add(mButtonChoice3);
         buttons.add(mButtonChoice4);
         player = new videoPlayer();
-        count = 0;
+        count = 1;
+        menu = new menuScreen();
 
         updateQuestion();
 
@@ -148,6 +153,7 @@ public class gameplay extends AppCompatActivity {
     }
 
     private void updateQuestion(){
+        roundView.setText("Round " + count);
         mQuestionView.setText(mQuestionLibrary.getQuestion(level));
         Collections.shuffle(buttons);
         mAnswer = String.valueOf(mQuestionLibrary.getAnswer());
@@ -169,14 +175,22 @@ public class gameplay extends AppCompatActivity {
     }
     private void checkAnswer(Button x){
         if (x.getText() == mAnswer) {
-            mScore += (Math.pow(level + 1, 2));
+            mScore += (Math.pow(level, 2)) + 1;
             updateScore(mScore);
             Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
-            if(++count == 10){
+            if(count++ == limit){
+                menu.update(mScore * level);
                 startActivity(new Intent(gameplay.this, menuScreen.class));
             }
             updateQuestion();
         } else {
+            int n = level + 1;
+            if (mScore - n < 0){
+                mScore = 0;
+            }else{
+                mScore -= n;
+            }
+            updateScore(mScore);
             Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
         }
     }
