@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/title"
+    android:layout_gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Item Store "
+        android:textColor="@android:color/background_dark"
+        android:textSize="40sp" />
+    <Button
+        android:id="@+id/coupon1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_weight="1"
+        android:text="Coupon 1           2000 S Coins"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
+        android:background="#eaad43"
+        />
+    <Button
+        android:id="@+id/coupon2"
+        android:background="#eaad43"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:foregroundGravity="center_vertical"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Coupon 2           2000 S Coins"
+        android:textSize="30sp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+
+        />
+    <Button
+        android:id="@+id/coupon3"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Coupon 3           2000 S Coins"
+        android:textSize="30sp"
+        android:background="#eaad43"
+        android:layout_margin="10dp"
+        />
+
+</LinearLayout>
+
