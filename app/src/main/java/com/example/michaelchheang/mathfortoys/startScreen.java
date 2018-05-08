@@ -5,13 +5,19 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.media.MediaPlayer;
 
 public class startScreen extends AppCompatActivity{
+    private MediaPlayer startSong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
+
+        startSong = MediaPlayer.create(startScreen.this, R.raw.start_song);
+
+        startSong.start();
 
         init();
     }
