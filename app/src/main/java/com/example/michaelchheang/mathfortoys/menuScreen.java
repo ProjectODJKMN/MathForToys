@@ -53,6 +53,14 @@ public class menuScreen extends AppCompatActivity {
                 startActivity(new Intent(menuScreen.this, settingsPage.class));
             }
         });
+        Button store = findViewById(R.id.storeButton);
+        store.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                bEffect.start();
+                startActivity(new Intent(menuScreen.this, store.class));
+            }
+        });
 
     }
     public void update(int n){
