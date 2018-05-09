@@ -5,7 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/title"
+    android:background="@drawable/ogtitle"
     tools:context="com.example.michaelchheang.mathfortoys.gameplay">
 
     <android.support.constraint.Guideline
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline19"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.9026764" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline22"
@@ -52,19 +52,23 @@
 
     <TextView
         android:id="@+id/problemText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="315dp"
+        android:layout_height="165dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/background_light"
-        android:textSize="50sp"
         android:gravity="center"
+        android:textSize="50sp"
+        app:fontFamily="@font/kiddish"
         app:layout_constraintBottom_toTopOf="@+id/guideline19"
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
-        app:layout_constraintTop_toTopOf="@+id/guideline17" />
+        app:layout_constraintTop_toTopOf="@+id/guideline17"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/choice1_button"
@@ -76,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:textSize="30sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/choice3_button"
         app:layout_constraintEnd_toStartOf="@+id/choice2_button"
@@ -93,6 +98,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
         android:textSize="30sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/choice4_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +116,7 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/holo_orange_light"
         android:textSize="30sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/choice4_button"
@@ -128,6 +135,7 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/holo_orange_light"
         android:textSize="30sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,6 +151,7 @@
         android:layout_marginStart="8dp"
         android:text="@string/quit_button"
         android:textSize="30sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
@@ -158,8 +167,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textSize="30sp"
-        android:gravity="center"
+        android:gravity="end"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        app:fontFamily="@font/kiddish"
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toStartOf="@+id/guideline22"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -167,15 +179,20 @@
 
     <TextView
         android:id="@+id/scoreText"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="74dp"
+        android:layout_height="37dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Score:"
-        android:textSize="20sp"
         android:gravity="right"
+        android:text="Score:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:fontFamily="@font/kiddish"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
-        app:layout_constraintEnd_toStartOf="@+id/guideline21"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline22"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
@@ -189,5 +206,24 @@
         android:background="@drawable/buttonstyle"
         android:layout_margin="20dp"
         />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="323dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        app:fontFamily="@font/kiddish"
+        app:layout_constraintBottom_toTopOf="@+id/problemText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline21"
+        app:layout_constraintStart_toStartOf="@+id/guideline20"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyText" />
 
 </android.support.constraint.ConstraintLayout>

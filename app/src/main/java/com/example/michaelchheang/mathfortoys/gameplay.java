@@ -4,7 +4,8 @@ import static com.example.michaelchheang.mathfortoys.R.layout.videochoice;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -26,9 +27,10 @@ public class gameplay extends AppCompatActivity {
     private Button mult;
     private Button div;
     private Button helpButton;
-    private TextView roundView;
     private TextView mScoreView;
     private TextView mQuestionView;
+    private TextView timer;
+    private TextView round;
     private Button mButtonChoice1;
     private Button mButtonChoice2;
     private Button mButtonChoice3;
@@ -40,9 +42,12 @@ public class gameplay extends AppCompatActivity {
     private static int level;
     final Context context = this;
     private videoPlayer player;
-    private int count;
     private static int limit;
-    private menuScreen menu;
+    private int roundCount;
+    private CountDownTimer ct;
+    private boolean timerSwitch;
+    private MediaPlayer bEffects;
+    private menuScreen menu = new menuScreen();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +55,9 @@ public class gameplay extends AppCompatActivity {
         setContentView(R.layout.activity_gameplay);
 
         mScoreView = (TextView) findViewById(R.id.scoreText);
-        roundView = (TextView) findViewById(R.id.difficultyText);
         mQuestionView = (TextView) findViewById(R.id.problemText);
+        timer = (TextView) findViewById(R.id.timer);
+        round = (TextView) findViewById(R.id.difficultyText);
         mButtonChoice1 = (Button) findViewById(R.id.choice1_button);
         mButtonChoice2 = (Button) findViewById(R.id.choice2_button);
         mButtonChoice3 = (Button) findViewById(R.id.choice3_button);
@@ -63,38 +69,55 @@ public class gameplay extends AppCompatActivity {
         buttons.add(mButtonChoice3);
         buttons.add(mButtonChoice4);
         player = new videoPlayer();
-        count = 1;
-        menu = new menuScreen();
+        roundCount = 0;
+        bEffects = MediaPlayer.create(this, R.raw.button_click);
 
         updateQuestion();
+
+        timerSwitch = settingsPage.isOn;
+
+        if(timerSwitch == true) {
+            refreshTimer();
+        }
+        else {
+            timer.setText("Math For Kids");
+        }
 
         mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bEffects.start();
                 checkAnswer(mButtonChoice1);
             }
         });
         mButtonChoice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bEffects.start();
                 checkAnswer(mButtonChoice2);
             }
         });
         mButtonChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bEffects.start();
                 checkAnswer(mButtonChoice3);
             }
         });
         mButtonChoice4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bEffects.start();
                 checkAnswer(mButtonChoice4);
             }
         });
         quitToMenu.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v){
+                if(timerSwitch == true) {
+                    ct.cancel();
+                }
+                bEffects.start();
                 startActivity (new Intent(gameplay.this, menuScreen.class));
             }
         });
@@ -102,6 +125,7 @@ public class gameplay extends AppCompatActivity {
         helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                bEffects.start();
                 final Dialog myDialog = new Dialog(context);
                 myDialog.setContentView(R.layout.videochoice);
 
@@ -114,6 +138,7 @@ public class gameplay extends AppCompatActivity {
                 add.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        bEffects.start();
                         player.setVideo(0);
                         startActivity(new Intent(gameplay.this, videoPlayer.class));
                     }
@@ -121,6 +146,7 @@ public class gameplay extends AppCompatActivity {
                 sub.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        bEffects.start();
                         player.setVideo(1);
                         startActivity(new Intent(gameplay.this, videoPlayer.class));
                     }
@@ -128,6 +154,7 @@ public class gameplay extends AppCompatActivity {
                 mult.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        bEffects.start();
                         player.setVideo(2);
                         startActivity(new Intent(gameplay.this, videoPlayer.class));
                     }
@@ -135,6 +162,7 @@ public class gameplay extends AppCompatActivity {
                 div.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        bEffects.start();
                         player.setVideo(3);
                         startActivity(new Intent(gameplay.this, videoPlayer.class));
                     }
@@ -153,7 +181,12 @@ public class gameplay extends AppCompatActivity {
     }
 
     private void updateQuestion(){
-        roundView.setText("Round " + count);
+        if (roundCount == limit) {
+            round.setText("Round:" + limit + "/" + limit);
+        }
+        else {
+            round.setText("Round:" + (roundCount + 1) + "/" + limit);
+        }
         mQuestionView.setText(mQuestionLibrary.getQuestion(level));
         Collections.shuffle(buttons);
         mAnswer = String.valueOf(mQuestionLibrary.getAnswer());
@@ -173,25 +206,71 @@ public class gameplay extends AppCompatActivity {
     private void updateScore(int mScore) {
         mScoreView.setText("Score: " + mScore);
     }
+
     private void checkAnswer(Button x){
         if (x.getText() == mAnswer) {
-            mScore += (Math.pow(level, 2)) + 1;
+            mScore += (Math.pow(level + 1, 2));
             updateScore(mScore);
             Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
-            if(count++ == limit){
+            if(++roundCount == limit) {
                 menu.update(mScore * level);
-                startActivity(new Intent(gameplay.this, menuScreen.class));
+                startActivity(new Intent(gameplay.this, winScreen.class));
             }
             updateQuestion();
-        } else {
-            int n = level + 1;
-            if (mScore - n < 0){
-                mScore = 0;
-            }else{
-                mScore -= n;
+
+            if(timerSwitch == true) {
+                ct.cancel();
+                refreshTimer();
             }
-            updateScore(mScore);
+            else {
+                timer.setText("Math For Kids");
+            }
+
+        } else {
             Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void refreshTimer() {
+        if (level == 0) {
+            ct = new CountDownTimer(9000, 1000) {
+                @Override
+                public void onTick(long l) {
+                    timer.setText("Time Remaining: " + l / 1000 + " seconds");
+                }
+
+                @Override
+                public void onFinish() {
+                    startActivity(new Intent(gameplay.this, lossScreen.class));
+                }
+            }.start();
+        }
+        else if (level == 1)
+        {
+            ct = new CountDownTimer(11000, 1000) {
+                @Override
+                public void onTick(long l) {
+                    timer.setText("Time Remaining: " + l / 1000 + " seconds");
+                }
+
+                @Override
+                public void onFinish() {
+                    startActivity(new Intent(gameplay.this, lossScreen.class));
+                }
+            }.start();
+        }
+        else {
+            ct = new CountDownTimer(13000, 1000) {
+                @Override
+                public void onTick(long l) {
+                    timer.setText("Time Remaining: " + l / 1000 + " seconds");
+                }
+
+                @Override
+                public void onFinish() {
+                    startActivity(new Intent(gameplay.this, lossScreen.class));
+                }
+            }.start();
         }
     }
 }

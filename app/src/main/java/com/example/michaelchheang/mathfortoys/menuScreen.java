@@ -2,6 +2,7 @@ package com.example.michaelchheang.mathfortoys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,11 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class menuScreen extends AppCompatActivity {
-
+    private MediaPlayer bEffect;
     private TextView money;
     private gameplay game;
     private SharedPreferences load;
-    private int coins;
+    private static int coins;
     private static int coinsWon = 0;
     private static final String PREF_NAME = "CurrencyFolder";
 
@@ -25,6 +26,9 @@ public class menuScreen extends AppCompatActivity {
         load = getSharedPreferences(PREF_NAME, 0);
         coins = load.getInt("coins", 0);
         money = (TextView) findViewById(R.id.currency);
+
+        bEffect = MediaPlayer.create(this,R.raw.button_click);
+
         init();
     }
 
@@ -36,6 +40,7 @@ public class menuScreen extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                bEffect.start();
                 startActivity(new Intent(menuScreen.this, selectGrade.class));
             }
         });
@@ -44,6 +49,7 @@ public class menuScreen extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                bEffect.start();
                 startActivity(new Intent(menuScreen.this, settingsPage.class));
             }
         });
@@ -51,6 +57,9 @@ public class menuScreen extends AppCompatActivity {
     }
     public void update(int n){
         coinsWon = n;
+    }
+    public int getCoinsWon(){
+        return coinsWon;
     }
     public void updateCurrency(int n){
         coins = coins + n;

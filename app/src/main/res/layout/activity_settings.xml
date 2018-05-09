@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
+    android:background="@drawable/ogtitle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.michaelchheang.mathfortoys.settingsPage">
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.054628223" />
+        app:layout_constraintGuide_percent="0.06" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline25"
@@ -50,47 +51,54 @@
         app:layout_constraintGuide_percent="0.19" />
 
     <TextView
-        android:id="@+id/settings"
+        android:id="@+id/settingsTitle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/settings_button"
-        android:textSize="30sp"
         android:gravity="center"
+        android:text="@string/settings_button"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="45sp"
+        app:fontFamily="@font/kiddish"
         app:layout_constraintBottom_toTopOf="@+id/guideline27"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
         app:layout_constraintTop_toTopOf="@+id/guideline24" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/volumeBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline25"
+        app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toTopOf="@+id/guideline29" />
+        app:layout_constraintTop_toTopOf="@+id/guideline25" />
 
     <TextView
-        android:id="@+id/music"
+        android:id="@+id/musicVolume"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="music_text"
-        android:textSize="20sp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline29"
-        app:layout_constraintEnd_toStartOf="@+id/guideline28"
+        android:text="Music Volume"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:fontFamily="@font/kiddish"
+        app:layout_constraintBottom_toTopOf="@+id/guideline25"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
         app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
@@ -116,33 +124,41 @@
         app:layout_constraintGuide_percent="0.3915023" />
 
     <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/timerSwitch"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline31"
+        android:checked="false"
+        android:track="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"
         app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toTopOf="@+id/guideline25" />
+        app:layout_constraintTop_toTopOf="@+id/guideline31"
+        tools:checked="false" />
 
     <TextView
-        android:id="@+id/question_timer"
+        android:id="@+id/questionTimer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="question_timer"
-        android:textSize="20sp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline31"
+        android:text="Question Timer"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:fontFamily="@font/kiddish"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline28"
-        app:layout_constraintTop_toTopOf="@+id/guideline25" />
+        app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
     <Button
         android:id="@+id/notification_button"
@@ -152,9 +168,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="notifications"
-        android:textSize="20sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
+        android:text="notifications"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/email_button"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintHorizontal_bias="0.5"
@@ -170,9 +187,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="email"
-        android:textSize="20sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
+        android:text="email"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
@@ -186,9 +204,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="faq"
-        android:textSize="20sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
+        android:text="faq"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/developer_button"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
@@ -202,11 +221,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="about"
-        android:textSize="20sp"
+        android:fontFamily="@font/kiddish"
         android:gravity="center"
+        android:text="about"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
+
 </android.support.constraint.ConstraintLayout>

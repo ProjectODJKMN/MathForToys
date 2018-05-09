@@ -20,7 +20,12 @@
         <activity android:name=".selectGrade" />
         <activity android:name=".settingsPage"/>
         <activity android:name=".videoPlayer"/>
-        <activity android:name=".gameplay"></activity>
+        <activity android:name=".gameplay"/>
+        <activity android:name =".lossScreen"/>
+        <activity android:name=".winScreen"/>
+        <activity android:name=".aboutScreen"/>
+        <activity android:name=".store">
+        </activity>
     </application>
 
 </manifest>
