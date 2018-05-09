@@ -21,6 +21,8 @@ public class store extends AppCompatActivity{
     TextView money;
     final Context context = this;
     menuScreen menu = new menuScreen();
+    private Dialog myDialog;
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -30,14 +32,31 @@ public class store extends AppCompatActivity{
         coupon2 = (Button) findViewById(R.id.coupon2);
         coupon3 = (Button) findViewById(R.id.coupon3);
         money = (TextView) findViewById(R.id.currency);
-
         money.setText("S Coins: " + String.valueOf(menu.getCurrency()));
+        yes = (Button) findViewById(R.id.yes);
+        no = (Button) findViewById(R.id.no);
 
         coupon1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                myDialog = new Dialog(context);
+                myDialog.setContentView(R.layout.confirmation);
                 if(menu.getCurrency() >= 10) {
-                    handleClick(-10);
+                    yes.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            menu.update(-10);
+                            Toast.makeText(store.this, "Congratulations ", Toast.LENGTH_SHORT).show();
+                            myDialog.dismiss();
+                        }
+                    });
+                    no.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            myDialog.dismiss();
+                        }
+                    });
+                    myDialog.show();
                 }
                 else{
                     Toast.makeText(store.this, "Not enough coins", Toast.LENGTH_SHORT).show();
@@ -47,9 +66,24 @@ public class store extends AppCompatActivity{
         coupon2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                myDialog = new Dialog(context);
+                myDialog.setContentView(R.layout.confirmation);
                 if(menu.getCurrency() >= 20) {
-                    handleClick(-20);
-                }
+                    yes.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            menu.update(-20);
+                            Toast.makeText(store.this, "Congratulations ", Toast.LENGTH_SHORT).show();
+                            myDialog.dismiss();
+                        }
+                    });
+                    no.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            myDialog.dismiss();
+                        }
+                    });
+                    myDialog.show();                }
                 else{
                     Toast.makeText(store.this, "Not enough coins", Toast.LENGTH_SHORT).show();
                 }
@@ -58,36 +92,28 @@ public class store extends AppCompatActivity{
         coupon3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                myDialog = new Dialog(context);
+                myDialog.setContentView(R.layout.confirmation);
                 if(menu.getCurrency() >= 30) {
-                    handleClick(-30);
-                }
+                    yes.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            menu.update(-30);
+                            Toast.makeText(store.this, "Congratulations ", Toast.LENGTH_SHORT).show();
+                            myDialog.dismiss();
+                        }
+                    });
+                    no.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            myDialog.dismiss();
+                        }
+                    });
+                    myDialog.show();                }
                 else{
                     Toast.makeText(store.this, "Not enough coins", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    public void handleClick(int n){
-        final Dialog myDialog = new Dialog(context);
-        myDialog.setContentView(R.layout.confirmation);
-        yes = (Button) findViewById(R.id.yes);
-        no = (Button) findViewById(R.id.no);
-
-        yes.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                menu.update(-10);
-                Toast.makeText(store.this, "Congratulations ", Toast.LENGTH_SHORT).show();
-                myDialog.dismiss();
-            }
-        });
-        no.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-            }
-        });
-        myDialog.show();
     }
 }
