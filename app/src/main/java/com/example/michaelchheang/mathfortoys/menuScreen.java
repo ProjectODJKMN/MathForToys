@@ -75,6 +75,7 @@ public class menuScreen extends AppCompatActivity {
         SharedPreferences.Editor save = load.edit();
         save.putInt("coins", coins);
         save.commit();
+        update(0);
     }
 
     public int getCurrency(){
