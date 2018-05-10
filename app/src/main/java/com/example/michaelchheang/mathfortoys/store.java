@@ -67,6 +67,8 @@ public class store extends AppCompatActivity{
                     menu.update(-y);
                     Toast.makeText(store.this, "Congratulations ", Toast.LENGTH_SHORT).show();
                     myDialog.dismiss();
+                    finish();
+                    startActivity(getIntent());
                 }
             });
             no.setOnClickListener(new View.OnClickListener(){
@@ -75,7 +77,9 @@ public class store extends AppCompatActivity{
                     myDialog.dismiss();
                 }
             });
-            myDialog.show();                }
+            myDialog.show();
+
+        }
         else{
             Toast.makeText(store.this, "Not enough coins", Toast.LENGTH_SHORT).show();
         }

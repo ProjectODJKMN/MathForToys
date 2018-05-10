@@ -33,7 +33,7 @@ public class menuScreen extends AppCompatActivity {
     }
 
     public void init(){
-        updateCurrency();
+        updateCurrency(coinsWon);
         money.setText("S Coins: " + String.valueOf(getCurrency()));
         Button playButton = (Button) findViewById(R.id.playButton);
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -65,13 +65,12 @@ public class menuScreen extends AppCompatActivity {
     }
     public void update(int n){
         coinsWon = n;
-        updateCurrency();
     }
     public int getCoinsWon(){
         return coinsWon;
     }
-    public void updateCurrency(){
-        coins = coins + coinsWon;
+    public void updateCurrency(int n){
+        coins = coins + n;
         load = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor save = load.edit();
         save.putInt("coins", coins);
