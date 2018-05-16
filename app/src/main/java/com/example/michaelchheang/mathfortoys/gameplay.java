@@ -47,6 +47,8 @@ public class gameplay extends AppCompatActivity {
     private CountDownTimer ct;
     private boolean timerSwitch;
     private MediaPlayer bEffects;
+    private MediaPlayer correct;
+    private MediaPlayer incorrect;
     private menuScreen menu = new menuScreen();
 
     @Override
@@ -71,6 +73,8 @@ public class gameplay extends AppCompatActivity {
         player = new videoPlayer();
         roundCount = 0;
         bEffects = MediaPlayer.create(this, R.raw.button_click);
+        correct = MediaPlayer.create(this, R.raw.correct);
+        incorrect = MediaPlayer.create(this, R.raw.incorrect);
 
         updateQuestion();
 
@@ -86,28 +90,24 @@ public class gameplay extends AppCompatActivity {
         mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bEffects.start();
                 checkAnswer(mButtonChoice1);
             }
         });
         mButtonChoice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bEffects.start();
                 checkAnswer(mButtonChoice2);
             }
         });
         mButtonChoice3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bEffects.start();
                 checkAnswer(mButtonChoice3);
             }
         });
         mButtonChoice4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                bEffects.start();
+            public void onClick(View view){
                 checkAnswer(mButtonChoice4);
             }
         });
@@ -209,6 +209,7 @@ public class gameplay extends AppCompatActivity {
 
     private void checkAnswer(Button x){
         if (x.getText() == mAnswer) {
+            correct.start();
             mScore += (Math.pow(level + 1, 2));
             updateScore(mScore);
             Toast.makeText(gameplay.this, "correct", Toast.LENGTH_SHORT).show();
@@ -227,6 +228,12 @@ public class gameplay extends AppCompatActivity {
             }
 
         } else {
+            mScore -= (Math.pow(level + 1, 2)) - 1;
+            if (mScore < 0){
+                mScore = 0;
+            }
+
+            incorrect.start();
             Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
         }
     }

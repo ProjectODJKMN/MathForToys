@@ -41,21 +41,21 @@ public class store extends AppCompatActivity{
         coupon1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                setValue(10);
+                setValue(500);
                 handleClick();
             }
         });
         coupon2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                setValue(20);
+                setValue(1000);
                 handleClick();
             }
         });
         coupon3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                setValue(30);
+                setValue(1500);
                 handleClick();
             }
         });
