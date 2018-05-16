@@ -38,7 +38,7 @@ public class gameplay extends AppCompatActivity {
     private Button quitToMenu;
     private ArrayList<Button> buttons = new ArrayList<>();
     private String mAnswer;
-    private int mScore = 0;
+    private static int mScore = 0;
     private static int level;
     final Context context = this;
     private videoPlayer player;
@@ -232,7 +232,7 @@ public class gameplay extends AppCompatActivity {
             if (mScore < 0){
                 mScore = 0;
             }
-
+            updateScore(mScore);
             incorrect.start();
             Toast.makeText(gameplay.this, "wrong", Toast.LENGTH_SHORT).show();
         }
